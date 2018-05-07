@@ -22,20 +22,17 @@ participant Voter identified by voterId {
   o String voterId
   o String firstName
   o String lastName
+  o String email          optional
+  o Boolean hasVoted      default = false
 }
 
-asset ifVoted identified by voterId {
-  o String voterId
-  o Boolean hasVoted
+asset Candidate identified by candidateName {
+  o String candidateName
+  o Integer totalVotes    default = 0
 }
 
-asset candidateVote identified by politicalParty {
-  o String politicalParty
-  o Integer totalVote
-}
-
-transaction vote {
-  --> candidateVote cadidateVoteAsset
-  --> ifVoted ifVotedAsset
+transaction SubmitVote {
+  --> Voter vote
+  --> Candidate candidate
 }
 
