@@ -14,6 +14,7 @@
 
 /**
  * Write your model definitions here
+ * Comment added for testing purposes
  */
 
 namespace org.blockwiz.voting
