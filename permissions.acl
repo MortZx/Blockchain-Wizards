@@ -5,11 +5,11 @@
   */
 
 rule EverybodyCanReadEverything {
-    description: "Allow all participants read access to all resources"
+    description: "Make sure all participants can't read everything"
     participant: "org.blockwiz.voting.Voter"
     operation: READ
-    resource: "org.blockwiz.voting.votechain.*"
-    action: ALLOW
+    resource: "org.blockwiz.voting.*"
+    action: DENY
 }
 
 rule CandidatesCantSubmitTransactions {
