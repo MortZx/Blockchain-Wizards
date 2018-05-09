@@ -6,33 +6,34 @@
 
 rule EverybodyCanReadEverything {
     description: "Make sure all participants can't read everything"
-    participant: "org.blockwiz.voting.Voter"
+    participant: "org.blockwiz.voting.User"
     operation: READ
     resource: "org.blockwiz.voting.*"
-    action: DENY
+    action: ALLOW
 }
 
-rule CandidatesCantSubmitTransactions {
-    description: "Allow all participants to submit transactions"
-    participant: "org.blockwiz.votechain.Candidate"
-    operation: CREATE
-    resource: "org.blockwiz.voting.SubmitVote"
-    action: DENY
-}
+//Only if we use candidates as a participant, discuss for this possibility
+// rule CandidatesCantSubmitTransactions {
+//     description: "Allow all participants to submit transactions"
+//     participant: "org.blockwiz.voting.Candidate"
+//     operation: CREATE
+//     resource: "org.blockwiz.voting.SubmitVote"
+//     action: DENY
+// }
 
 rule VotersCanSubmitTransactions {
     description: "Allow all voters to submit transactions"
-    participant: "org.blockwiz.voting.Voter"
+    participant: "org.blockwiz.voting.User"
     operation: CREATE
-    resource: "org.blockwiz.votechain.SubmitVote"
+    resource: "org.blockwiz.voting.SubmitVote"
     action: ALLOW
 }
 
 rule OwnerHasFullAccessToTheirAssets {
     description: "Allow all participants full access to their assets"
-    participant(p): "org.blockwiz.votechain.User"
+    participant(p): "org.blockwiz.voting.User"
     operation: ALL
-    resource(r): "org.blockwiz.votechain.SubmitVote"
+    resource(r): "org.blockwiz.voting.SubmitVote"
     condition: (r.owner.getIdentifier() === p.getIdentifier())
     action: ALLOW
 }
