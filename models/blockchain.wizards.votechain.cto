@@ -1,8 +1,7 @@
 /**
  * Votechain model definition
- *
- * Author: Luke Powlett <l.j.powlett1@newcastle.ac.uk>
  */
+ 
 namespace blockchain.wizards.votechain
 
 asset Ballot identified by ballotId {
