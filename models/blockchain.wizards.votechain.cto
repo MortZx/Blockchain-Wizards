@@ -3,7 +3,7 @@
  *
  * Author: Luke Powlett <l.j.powlett1@newcastle.ac.uk>
  */
-namespace powlett.luke.votechain
+namespace blockchain.wizards.votechain
 
 asset Ballot identified by ballotId {
   o String ballotId

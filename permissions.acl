@@ -6,33 +6,33 @@
 
 rule EverybodyCanReadEverything {
     description: "Allow all participants read access to all resources"
-    participant: "powlett.luke.votechain.User"
+    participant: "blockchain.wizards.votechain.User"
     operation: READ
-    resource: "powlett.luke.votechain.*"
+    resource: "blockchain.wizards.votechain.*"
     action: ALLOW
 }
 
 rule CandidatesCantSubmitTransactions {
     description: "Allow all participants to submit transactions"
-    participant: "powlett.luke.votechain.Candidate"
+    participant: "blockchain.wizards.votechain.Candidate"
     operation: CREATE
-    resource: "powlett.luke.votechain.Vote"
+    resource: "blockchain.wizards.votechain.Vote"
     action: DENY
 }
 
 rule VotersCanSubmitTransactions {
     description: "Allow all voters to submit transactions"
-    participant: "powlett.luke.votechain.Voter"
+    participant: "blockchain.wizards.votechain.Voter"
     operation: CREATE
-    resource: "powlett.luke.votechain.Vote"
+    resource: "blockchain.wizards.votechain.Vote"
     action: ALLOW
 }
 
 rule OwnerHasFullAccessToTheirAssets {
     description: "Allow all participants full access to their assets"
-    participant(p): "powlett.luke.votechain.User"
+    participant(p): "blockchain.wizards.votechain.User"
     operation: ALL
-    resource(r): "powlett.luke.votechain.Vote"
+    resource(r): "blockchain.wizards.votechain.Vote"
     condition: (r.owner.getIdentifier() === p.getIdentifier())
     action: ALLOW
 }
