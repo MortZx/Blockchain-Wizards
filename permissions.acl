@@ -1,39 +1,38 @@
 /**
  * Votechain access control
  *
- * Authors: Blockchain-wizards
-  */
+ * Author: Luke Powlett <l.j.powlett1@newcastle.ac.uk>
+ */
 
 rule EverybodyCanReadEverything {
-    description: "Make sure all participants can't read everything"
-    participant: "org.blockwiz.voting.User"
+    description: "Allow all participants read access to all resources"
+    participant: "powlett.luke.votechain.User"
     operation: READ
-    resource: "org.blockwiz.voting.*"
+    resource: "powlett.luke.votechain.*"
     action: ALLOW
 }
 
-//Only if we use candidates as a participant, discuss for this possibility
-// rule CandidatesCantSubmitTransactions {
-//     description: "Allow all participants to submit transactions"
-//     participant: "org.blockwiz.voting.Candidate"
-//     operation: CREATE
-//     resource: "org.blockwiz.voting.SubmitVote"
-//     action: DENY
-// }
+rule CandidatesCantSubmitTransactions {
+    description: "Allow all participants to submit transactions"
+    participant: "powlett.luke.votechain.Candidate"
+    operation: CREATE
+    resource: "powlett.luke.votechain.Vote"
+    action: DENY
+}
 
 rule VotersCanSubmitTransactions {
     description: "Allow all voters to submit transactions"
-    participant: "org.blockwiz.voting.User"
+    participant: "powlett.luke.votechain.Voter"
     operation: CREATE
-    resource: "org.blockwiz.voting.SubmitVote"
+    resource: "powlett.luke.votechain.Vote"
     action: ALLOW
 }
 
 rule OwnerHasFullAccessToTheirAssets {
     description: "Allow all participants full access to their assets"
-    participant(p): "org.blockwiz.voting.User"
+    participant(p): "powlett.luke.votechain.User"
     operation: ALL
-    resource(r): "org.blockwiz.voting.SubmitVote"
+    resource(r): "powlett.luke.votechain.Vote"
     condition: (r.owner.getIdentifier() === p.getIdentifier())
     action: ALLOW
 }

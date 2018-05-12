@@ -1,0 +1,33 @@
+/**
+ * Votechain model definition
+ *
+ * Author: Luke Powlett <l.j.powlett1@newcastle.ac.uk>
+ */
+namespace powlett.luke.votechain
+
+asset Ballot identified by ballotId {
+  o String ballotId
+  o Boolean used default=false
+  --> User owner
+}
+
+abstract participant User identified by userId {
+  o String userId
+  o String firstName
+  o String lastName
+}
+
+participant Voter extends User {
+  o String address
+  o Boolean hasVoted default=false
+}
+
+participant Candidate extends User {
+  o String party
+}
+
+transaction Vote {
+  o String voteId
+  --> Ballot ballot
+  --> Candidate newOwner
+}

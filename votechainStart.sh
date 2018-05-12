@@ -3,7 +3,7 @@ echo "** STARTING FABRIC **"
 ../startFabric.sh
 ../createPeerAdminCard.sh
 echo "** INSTALLING VOTECHAIN ** "
-composer network install --archiveFile vote-network.bna --card PeerAdmin@hlfv1
+composer network install --archiveFile voting-network.bna --card PeerAdmin@hlfv1
 echo "** STARTING VOTECHAIN **"
 composer network start --networkName vote-network --networkVersion 0.0.1 --card PeerAdmin@hlfv1 --networkAdmin admin --networkAdminEnrollSecret adminpw
 composer card import --file networkadmin.card

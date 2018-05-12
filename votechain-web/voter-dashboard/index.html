@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <title>Voter Dashboard</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <script src="./js/script.js"></script>
+    <script>
+		$( document ).ready(function() {
+			console.log("document loaded");
+			// setButtonListeners();
+            getCandidates();
+		});
+	</script>
+
+  </head>
+
+  <body>
+      <nav class="navbar navbar-default">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="#">Voter Dashboard</a>
+            </div>
+      </nav>
+
+      <div class="container-fluid">
+          <!-- <div class="row">
+              <div class="col-sm-1"></div>
+              <div class="col-sm-10">
+                  <p></p>
+              <div class="col-sm-1"></div>
+          </div> -->
+          <div class="row">
+              <div class="col-sm-1"></div>
+              <div class="col-sm-10">
+                  <center>
+                      <p><strong>Voter Instructions: </strong>Enter your Voter ID and PIN underneath your desired Candidate, then press 'Submit'.</p>
+                      <p>Once your Vote has been processed, a receipt will be printed containing your personal Ballot ID.</p>
+                      <p>When polling closes, a bulletin of every ballot will be published on your consituencies web page. Here you can confirm the details of your Vote.</p>
+                      <p><strong>YOU HAVE ONLY 1 VOTE. THE SUBMISSION OF YOUR VOTE CAN NOT BE REVERSED.</strong></p>
+                  </center>
+              </div>
+              <div class="col-sm-1"></div>
+          </div>
+          <div class="row">
+              <div class="col-sm-1"></div>
+              <div class="col-sm-10">
+                  <div id="candidateResponse">
+                      <br>
+
+                      <!-- '<div class="row">
+                          <div class="col-sm-1"></div>
+                          <div class="col-sm-10">
+                              <div class="well">
+                                  <form>
+                                      <strong>Candidate ID: <input name="candidateId" type="hidden" value="userId">' + userId + '</input></strong>
+                                      <br>
+                                      <strong>Name: ' + firstName + ' ' + lastName + '</strong>
+                                      <br>
+                                      <strong>Party: ' + party + '</strong>
+                                      <br><br>
+                                      <div class="form-group">
+                                          <label for="email">Voter ID:</label>
+                                          <input type="email" class="form-control" name="voterId">
+                                      </div>
+                                      <div class="form-group">
+                                          <label for="pwd">PIN:</label>
+                                          <input type="password" class="form-control" name="voterPin">
+                                      </div>
+                                      <button id="voteSubmitButton" type="submit" onclick="submitBallot(this.form)" class="btn btn-default">Submit</button>
+                                  </form>
+                              </div>
+                          </div>
+                          <div class="col-sm-1"></div>
+                      </div>' -->
+
+                  </div>
+              </div>
+              <div class="col-sm-1"></div>
+          </div>
+      </div>
+  </body>
+</html>
