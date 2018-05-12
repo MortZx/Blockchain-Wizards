@@ -4,30 +4,40 @@
  
 namespace blockchain.wizards.votechain
 
+// A ballot is attributed to a user allowing them to vote for a candidate
+// A ballot can only be used once
 asset Ballot identified by ballotId {
   o String ballotId 
   o Boolean used default=false
   --> User owner
 }
 
+// A user logs in with his NationalInsuranceN#
 abstract participant User identified by userNI {
-  o String userNI    regex= /[A-Z][A-Z]-[0-9][0-9]-[0-9][0-9]-[0-9][0-9]-[A-Z]/
+  o String userNI    //regex= /[A-Z][A-Z]-[0-9][0-9]-[0-9][0-9]-[0-9][0-9]-[A-Z]/
   o String firstName 
   o String lastName
   o String email  optional
 }
 
+// A user becomes a voter for the SubmitVote transaction
+// he has a public key
+// Each user(voter) can only vote once
 participant Voter extends User {
   o String address
   o Boolean hasVoted default=false
 }
 
+// candidate info
 participant Candidate extends User {
   o String party
 }
 
+// transaction to submit a vote 
+// voter uses his ballot and votes for (attributes ballot to) the candidate
 transaction Vote {
   o String voteId
   --> Ballot ballot
   --> Candidate newOwner
 }
+
