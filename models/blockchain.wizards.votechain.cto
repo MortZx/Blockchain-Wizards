@@ -31,6 +31,7 @@ participant Voter extends User {
 // candidate info
 participant Candidate extends User {
   o String party
+  o Integer amountOfVotes default=0
 }
 
 // transaction to submit a vote 
