@@ -11,11 +11,16 @@ asset Ballot identified by ballotId {
   --> User owner
 }
 
-abstract participant User identified by userNHS {
-  o String userNHS    regex=/[0-9][0-9][0-9]-[0-9][0-9][0-9]-[0-9][0-9][0-9][0-9]/
+abstract participant User identified by userNI {
+  o String userNI    regex=/[0-9][0-9][0-9]-[0-9][0-9][0-9]-[0-9][0-9][0-9][0-9]/
   o String firstName 
   o String lastName
   o String email  optional
+}
+
+abstract participant UserCandidate identified by lastName{
+  o String firstName
+  o String lastName
 }
 
 participant Voter extends User {
@@ -23,7 +28,7 @@ participant Voter extends User {
   o Boolean hasVoted default=false
 }
 
-participant Candidate extends User {
+participant Candidate extends UserCandidate{
   o String party
 }
 

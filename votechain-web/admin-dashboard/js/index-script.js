@@ -3,7 +3,7 @@ function setButtonListeners(){
     $('#candidateSubmitButton').on('click', function() {
         console.log("Button Clicked");
         var jsonBody = {};
-        jsonBody['\$class'] = "powlett.luke.votechain.Candidate";
+        jsonBody['\$class'] = "blockchain.luke.votechain.Candidate";
         jsonBody['userId'] = "c" + Math.abs(hash((new Date()).getTime().toString() + $('#candidateLastName').val()));
         jsonBody['firstName'] = $('#candidateFirstName').val();
         jsonBody['lastName'] = $('#candidateLastName').val();

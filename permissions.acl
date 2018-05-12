@@ -1,7 +1,8 @@
 /**
  * Votechain access control
  *
- * Author: Luke Powlett <l.j.powlett1@newcastle.ac.uk>
+ * Author: Gui Vieira <gbv1e17@soton.ac.uk>
+           Mortimer Sotom <ms1e17@soton.ac.uk>
  */
 
 rule EverybodyCanReadEverything {
