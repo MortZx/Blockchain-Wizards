@@ -2,7 +2,11 @@
   "engines": {
     "composer": "^0.19.4"
   },
+<<<<<<< HEAD
   "name": "vote-chain",
+=======
+  "name": "votechain",
+>>>>>>> 23bb35d1ca740ae5add6732b18f8a6d0901f0611
   "version": "0.0.1",
   "description": "Blockchain voting system with hyperledger",
   "scripts": {
