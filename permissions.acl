@@ -5,49 +5,49 @@
            Mortimer Sotom <ms1e17@soton.ac.uk>
  */
 
-rule EverybodyCanReadEverything {
-    description: "Allow all participants read access to all resources"
-    participant: "blockchain.wizards.votechain.User"
-    operation: READ
-    resource: "blockchain.wizards.votechain.*"
-    action: ALLOW
-}
 
 rule CandidatesCantSubmitTransactions {
-    description: "Allow all participants to submit transactions"
+    description: "Don't allow candidates to submit a vote/transaction"
     participant: "blockchain.wizards.votechain.Candidate"
     operation: CREATE
     resource: "blockchain.wizards.votechain.Vote"
-    action: ALLOW
+    action: DENY
 }
 
 rule VotersCanSubmitTransactions {
-    description: "Allow all voters to submit transactions"
+    description: "Allow voters to submit their vote, a transaction"
     participant: "blockchain.wizards.votechain.Voter"
     operation: CREATE
     resource: "blockchain.wizards.votechain.Vote"
     action: ALLOW
 }
 
-rule OwnerHasFullAccessToTheirAssets {
-    description: "Allow all participants full access to their assets"
-    participant(p): "blockchain.wizards.votechain.User"
-    operation: ALL
-    resource(r): "blockchain.wizards.votechain.Vote"
-    condition: (r.owner.getIdentifier() === p.getIdentifier())
+rule EveryoneCanCheckIfVoterHasVoted {
+    description: "Anyone can check if a voter has voted or not"
+    participant: "blockchain.wizards.votechain.User"
+    operation: READ
+    resource: "blockchain.wizards.votechain.Voter"
     action: ALLOW
 }
 
-rule SystemACL {
+rule EveryoneCanReadCandidateInfo {
+    description: "Anyone can read candidate information"
+    participant: "blockchain.wizards.votechain.User"
+    operation: READ
+    resource: "blockchain.wizards.votechain.Candidate"
+    action: ALLOW
+}
+
+/* rule SystemACL {
     description: "System ACL to permit all access"
     participant: "org.hyperledger.composer.system.Participant"
     operation: ALL
     resource: "org.hyperledger.composer.system.**"
     action: ALLOW
-}
+} */
 
 rule NetworkAdminUser {
-    description: "Grant business network administrators full access to user resources"
+    description: "Network admins can only monitor the network"
     participant: "org.hyperledger.composer.system.NetworkAdmin"
     operation: ALL
     resource: "**"
@@ -57,7 +57,7 @@ rule NetworkAdminUser {
 rule NetworkAdminSystem {
     description: "Grant business network administrators full access to system resources"
     participant: "org.hyperledger.composer.system.NetworkAdmin"
-    operation: ALL
+    operation: CREATE, READ
     resource: "org.hyperledger.composer.system.**"
     action: ALLOW
 }

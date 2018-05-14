@@ -1,5 +1,7 @@
 /**
  * Votechain model definition
+Author: Gui Vieira <gbv1e17@soton.ac.uk>
+         Mortimer Sotom <ms1e17@soton.ac.uk>
  */
  
 namespace blockchain.wizards.votechain
@@ -12,25 +14,23 @@ asset Ballot identified by ballotId {
   --> User owner
 }
 
-// A user logs in with his NationalInsuranceN#
-abstract participant User identified by userNI {
-  o String userNI    //regex= /[A-Z][A-Z]-[0-9][0-9]-[0-9][0-9]-[0-9][0-9]-[A-Z]/
-  o String firstName 
-  o String lastName
-  o String email  optional
+// A user logs in with his provided userID
+abstract participant User identified by userID {
+  o String userID    regex=/[0-9][0-9][0-9][0-9]/
 }
 
 // A user becomes a voter for the SubmitVote transaction
 // he has a public key
 // Each user(voter) can only vote once
 participant Voter extends User {
-  o String address
   o Boolean hasVoted default=false
 }
 
 // candidate info
 participant Candidate extends User {
   o String party
+  o String firstName
+  o String lastName
   o Integer amountOfVotes default=0
 }
 
