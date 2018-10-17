@@ -1,3 +1,3 @@
 # votechain
 
-Blockchain voting system with hyperledger
+Blockchain voting system with IBM Hyperledger.
