@@ -12,4 +12,4 @@
 - *permissions.acl* is the access control file, it determines the CRUD functions for participants and users.   
 
 Instructions on how to test the project in the Playground will be provided at a later date.  
-See 'VoteChain_Report.pdf' for all details of the project.
+See *VoteChain_Report.pdf* for all details of the project.
